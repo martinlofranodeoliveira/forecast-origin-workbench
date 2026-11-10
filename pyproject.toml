@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools==84.2.1", "wheel==0.48.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "forecast-origin-workbench"
+version = "0.1.0"
+description = "Deterministic expanding-origin forecasting backtest core SDK"
+requires-python = ">=3.13"
+license = "MIT"
+authors = [{name = "Lofrano Tecnologia"}]
+dependencies = [
+    "numpy==2.5.4",
+    "scipy==1.18.1",
+    "scikit-learn==1.9.1",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = false
+
+[project.scripts]
+forecast-origin-workbench = "forecast_origin_workbench.cli:main"
+
+[tool.setuptools.package-data]
+forecast_origin_workbench = ["_notices/**/*"]

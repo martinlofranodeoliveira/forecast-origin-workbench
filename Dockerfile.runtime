@@ -1,0 +1,14 @@
+FROM python@sha256:281d39ff02e3b389401586134ff9e6572954687822a58055ec07a60ded4e0b7f AS install
+COPY wheelhouse/ /opt/wheelhouse/
+COPY requirements-runtime.lock /opt/runtime.lock
+COPY distributions/rebuilt/*.whl /opt/project/
+RUN python -m venv --without-pip /opt/forecast-runtime && python -m pip --python /opt/forecast-runtime/bin/python --disable-pip-version-check install --no-index --find-links /opt/wheelhouse --require-hashes -r /opt/runtime.lock && python -m pip --python /opt/forecast-runtime/bin/python --disable-pip-version-check install --no-index --no-deps /opt/project/*.whl
+FROM python@sha256:281d39ff02e3b389401586134ff9e6572954687822a58055ec07a60ded4e0b7f
+COPY --from=install /opt/forecast-runtime/ /opt/forecast-runtime/
+COPY --chown=1000:1000 consumer.py /consumer/consumer.py
+COPY --chown=1000:1000 oracles/ /consumer/oracles/
+COPY --chown=1000:1000 module-hashes.json /consumer/module-hashes.json
+ENV PATH=/opt/forecast-runtime/bin:/usr/local/bin:/usr/bin:/bin OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONHASHSEED=0 PYTHONNOUSERSITE=1 PYTHONDONTWRITEBYTECODE=1
+WORKDIR /consumer
+USER 1000:1000
+ENTRYPOINT ["python", "/consumer/consumer.py"]

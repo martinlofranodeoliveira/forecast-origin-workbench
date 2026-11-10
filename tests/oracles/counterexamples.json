@@ -1,0 +1,76 @@
+{
+  "schema": "forecast-origin-presource-counterexamples/1",
+  "product_source_absent": true,
+  "future_training_label": {
+    "origin": 5,
+    "horizon": 2,
+    "lag_count": 3,
+    "correct_latest_anchor": 3,
+    "correct_latest_target": 5,
+    "bad_anchor": 4,
+    "bad_target": 6,
+    "bad_rule": "anchor<=origin does not establish target maturity"
+  },
+  "immature_residual": {
+    "origin": 8,
+    "horizon": 2,
+    "previous_origins": [
+      3,
+      5,
+      7
+    ],
+    "eligible": [
+      3,
+      5
+    ],
+    "forbidden_origin": 7,
+    "forbidden_target": 9
+  },
+  "seasonal_beyond_period": {
+    "origin": 5,
+    "horizon": 4,
+    "period": 3,
+    "correct_source": 3,
+    "correct_prediction": 15,
+    "bad_source": 6,
+    "bad_prediction": 17
+  },
+  "future_current_error": {
+    "origin": 9,
+    "horizon": 2,
+    "prediction": 24,
+    "past_abs_errors": [
+      3,
+      3,
+      3
+    ],
+    "future_actual_before": 27,
+    "future_actual_after": 1000,
+    "correct_radius_before_after": 3,
+    "correct_band_before_after": [
+      21,
+      27
+    ],
+    "bad_if_current_error_included_radius": 976,
+    "bad_band": [
+      -952,
+      1000
+    ]
+  },
+  "quantile_interpolation": {
+    "abs_errors": [
+      1,
+      2,
+      2,
+      4,
+      9
+    ],
+    "p": [
+      4,
+      5
+    ],
+    "nearest_rank": 4,
+    "correct_radius": 4,
+    "bad_linear_interpolation_radius": 5
+  }
+}

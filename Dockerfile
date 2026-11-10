@@ -1,0 +1,8 @@
+ARG PREPARED_IMAGE=forecast-origin-dependencies:local
+FROM ${PREPARED_IMAGE}
+COPY --chown=1000:1000 . /work/source/
+RUN mkdir -p /work/distributions /work/evidence /work/home && chown -R 1000:1000 /work
+ENV HOME=/work/home OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONHASHSEED=0 PYTHONNOUSERSITE=1 PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PIP_DISABLE_PIP_VERSION_CHECK=1
+WORKDIR /work
+USER 1000:1000
+ENTRYPOINT ["python", "/work/source/scripts/build_gate.py"]

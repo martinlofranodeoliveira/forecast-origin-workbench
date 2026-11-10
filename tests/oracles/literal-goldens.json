@@ -1,0 +1,172 @@
+{
+  "schema": "forecast-origin-presource-literals/1",
+  "created_before_product": true,
+  "oracle_units": "arbitrary synthetic scalar units; not money",
+  "series": [
+    10,
+    12,
+    11,
+    15,
+    14,
+    18,
+    17,
+    21,
+    20,
+    24,
+    23,
+    27
+  ],
+  "index_case": {
+    "lag_count": 3,
+    "origin": 5,
+    "horizon": 2,
+    "training_anchors": [
+      2,
+      3
+    ],
+    "training_features": [
+      [
+        11,
+        12,
+        10
+      ],
+      [
+        15,
+        11,
+        12
+      ]
+    ],
+    "training_targets": [
+      14,
+      18
+    ],
+    "training_target_indices": [
+      4,
+      5
+    ],
+    "forbidden_next_anchor": 4,
+    "forbidden_next_target_index": 6,
+    "prediction_features": [
+      18,
+      14,
+      15
+    ],
+    "forecast_target_index": 7
+  },
+  "seasonal": {
+    "origin": 5,
+    "period": 3,
+    "horizons": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "source_indices": [
+      3,
+      4,
+      5,
+      3
+    ],
+    "predictions": [
+      15,
+      14,
+      18,
+      15
+    ]
+  },
+  "persistence": {
+    "origin": 5,
+    "horizons": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "predictions": [
+      18,
+      18,
+      18,
+      18
+    ]
+  },
+  "maturity": {
+    "horizon": 2,
+    "prior_origins": [
+      3,
+      5,
+      7
+    ],
+    "predictions": [
+      15,
+      18,
+      21
+    ],
+    "target_indices": [
+      5,
+      7,
+      9
+    ],
+    "signed_errors": [
+      3,
+      3,
+      3
+    ],
+    "at_origin7": {
+      "eligible_origins": [
+        3,
+        5
+      ],
+      "count": 2,
+      "state": "UNAVAILABLE_INSUFFICIENT_HISTORY"
+    },
+    "at_origin9": {
+      "eligible_origins": [
+        3,
+        5,
+        7
+      ],
+      "count": 3,
+      "rank": 3,
+      "radius": 3,
+      "prediction": 24,
+      "lower": 21,
+      "upper": 27
+    },
+    "equality_rule": "r+h==o eligible; r+h==o+1 not eligible; current-origin forecast not eligible"
+  },
+  "metrics": {
+    "signed_errors": [
+      -3,
+      4,
+      -2,
+      0
+    ],
+    "mae": "2.25",
+    "mse": "7.25",
+    "rmse": "2.692582403567252015625355245770164778147560080822394418840194335008323"
+  },
+  "band_cases": [
+    {
+      "abs_errors": [
+        1,
+        2,
+        2,
+        4,
+        9
+      ],
+      "p_numerator": 4,
+      "p_denominator": 5,
+      "count": 5,
+      "rank": 4,
+      "radius": 4
+    },
+    {
+      "abs_errors": [
+        1,
+        2
+      ],
+      "state": "UNAVAILABLE_INSUFFICIENT_HISTORY"
+    }
+  ]
+}

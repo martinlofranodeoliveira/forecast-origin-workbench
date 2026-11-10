@@ -1,0 +1,4 @@
+model,origin,horizon,target,prediction,training_status,anchor_start,anchor_end,training_rows,latest_training_target,observed_support,prefix_sha256,band_status,band_count,band_rank,band_radius,band_lower,band_upper,eligible_residual_origins,actual,error
+hgb,64,1,65,7.0,APPLICABLE,0,63,64,64,[64],211970272cbe440db9f91626330e1b657827887aeed68ec82ac433c374186e3f,UNAVAILABLE_INSUFFICIENT_HISTORY,0,,,,,[],7.0,0.0
+persistence,64,1,65,7.0,NOT_APPLICABLE,,,,,[64],211970272cbe440db9f91626330e1b657827887aeed68ec82ac433c374186e3f,UNAVAILABLE_INSUFFICIENT_HISTORY,0,,,,,[],7.0,0.0
+seasonal,64,1,65,7.0,NOT_APPLICABLE,,,,,[62],211970272cbe440db9f91626330e1b657827887aeed68ec82ac433c374186e3f,UNAVAILABLE_INSUFFICIENT_HISTORY,0,,,,,[],7.0,0.0

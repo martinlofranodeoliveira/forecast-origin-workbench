@@ -1,0 +1,9 @@
+include *.md
+include LICENSE README.md README.pt-BR.md THIRD_PARTY_NOTICES.md requirements*.lock qualified-wheel-inventory.json Dockerfile* .dockerignore .gitignore
+recursive-include src *.py
+recursive-include src/forecast_origin_workbench/_notices *
+recursive-include tests *.py *.json *.csv
+recursive-include scripts *.py *.sh
+recursive-include docs *.md
+recursive-include examples *.json
+recursive-include .github *.yml
